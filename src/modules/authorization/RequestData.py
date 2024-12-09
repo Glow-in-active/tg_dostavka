@@ -1,6 +1,6 @@
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
-import sqlite3
 from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db
+
 
 def register_authorization_handlers(bot):
     '''
@@ -29,7 +29,6 @@ def register_authorization_handlers(bot):
         Args:
             message (telebot.types.Message): Объект сообщения, содержащий информацию о чате, пользователе и переданных контактных данных
         '''
-
         if message.contact:
             id = message.chat.id
             phone_number = message.contact.phone_number
@@ -39,7 +38,6 @@ def register_authorization_handlers(bot):
                 bot.send_message(id, f"{name}, здравствуйте", reply_markup=ReplyKeyboardRemove())
             else:
                 bot.send_message(id, "Ваш номер телефона подтвержден. Введите ваше имя", reply_markup=ReplyKeyboardRemove())
-
                 bot.register_next_step_handler(message, get_name, phone_number)
         else:
             bot.send_message(message.chat.id, "Ошибка получения номера телефона")
@@ -55,7 +53,6 @@ def register_authorization_handlers(bot):
         '''
         name = message.text
         bot.send_message(message.chat.id, f"{name}, введите ваш возраст")
-    
         bot.register_next_step_handler(message, get_age, phone_number, name)
 
     def get_age(message, phone_number, name):
@@ -71,9 +68,7 @@ def register_authorization_handlers(bot):
         '''
         try:
             age = int(message.text)
-
             save_user_data(message.chat.id, phone_number, name, age)
-            
             bot.send_message(message.chat.id, "Регистрация прошла успешно")
         except ValueError:
             bot.send_message(message.chat.id, "Возраст должен быть числом. Пожалуйста, введите его снова.")

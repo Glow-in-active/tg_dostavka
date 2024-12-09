@@ -1,4 +1,8 @@
-import sqlite3
+from database.db import get_db_cursor, get_db_connection
+
+cursor = get_db_cursor()
+conn = get_db_connection()
+
 def save_user_data(id, phone_number, name, age):
     '''
     Функция для сохранения данных пользователя в базе данных
@@ -10,9 +14,6 @@ def save_user_data(id, phone_number, name, age):
         name (str): Имя пользователя
         age (int): Возраст пользователя
     '''
-    conn = sqlite3.connect('../../database/users')
-    cursor = conn.cursor()
-
     cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
     user = cursor.fetchone()
 
@@ -24,7 +25,6 @@ def save_user_data(id, phone_number, name, age):
                     (id, phone_number, name, age))
 
     conn.commit()
-    conn.close()
 
 def is_old_user(id):
     '''
@@ -34,9 +34,6 @@ def is_old_user(id):
     Returns:
         bool: Возвращает True, если пользователь найден в базе данных, иначе False
     '''
-    conn = sqlite3.connect('../../database/users')
-    cursor = conn.cursor()
-
     cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
     res = cursor.fetchone()
 
@@ -44,7 +41,6 @@ def is_old_user(id):
         return True
     else:
         return False
-    conn.close()
 
 def get_name_from_db(id):
     '''
@@ -55,9 +51,6 @@ def get_name_from_db(id):
     Returns:
         str: Имя пользователя, если найдено, иначе выводит сообщение об ошибке.
     '''
-    conn = sqlite3.connect('../../database/users')
-    cursor = conn.cursor()
-
     cursor.execute("SELECT name FROM users WHERE id = ?", (id,))
     result = cursor.fetchone()
 
@@ -66,6 +59,3 @@ def get_name_from_db(id):
         return name
     else:
         print(f"Пользователь с ID {id} не найден.")
-    conn.close()
-
-    
