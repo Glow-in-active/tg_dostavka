@@ -1,5 +1,3 @@
-# src/modules/authorization/RequestData.py
-
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db, save_user_address, get_user_addresses
 
@@ -12,7 +10,7 @@ def register_authorization_handlers(bot):
         '''
         Обработчик команды /start
         Отправляет приветственное сообщение с клавиатурой для авторизации
-        
+
         Args:
             message (telebot.types.Message): Сообщение от пользователя, содержащее информацию о чате и тексте команды
         '''
@@ -89,27 +87,50 @@ def register_authorization_handlers(bot):
             bot.register_next_step_handler(message, get_age, phone_number, name)
 
     def get_address(message, id):
+        '''
+        Обработчик получения адреса пользователя
+
+        Args:
+            message (telebot.types.Message): Сообщение с адресом пользователя
+            id (int): Идентификатор чата пользователя
+        '''
         address = message.text
         save_user_address(id, address)
-        bot.send_message(id, f"Текущий адрес, {address}")
-        
+        bot.send_message(id, f"Текущий адрес: {address}")
+
         keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
         change_address_button = KeyboardButton(text="Сменить адрес")
         keyboard.add(change_address_button)
-        bot.send_message(id, f"Текущий адрес, {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
-
+        bot.send_message(id, f"Текущий адрес: {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
 
     def handle_address_selection(message, id):
-        address=get_user_addresses(id)
+        '''
+        Обработчик выбора адреса пользователя
+
+        Args:
+            message (telebot.types.Message): Сообщение с выбранным адресом пользователя
+            id (int): Идентификатор чата пользователя
+        '''
         if message.text == "Ввести новый адрес":
             bot.send_message(id, "Пожалуйста, введите ваш новый адрес")
             bot.register_next_step_handler(message, get_address, id)
         else:
             save_user_address(id, message.text)
-            bot.send_message(id, f"Текущий адрес, {address}")
+            bot.send_message(id, f"Текущий адрес: {message.text}")
+
+            keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+            change_address_button = KeyboardButton(text="Сменить адрес")
+            keyboard.add(change_address_button)
+            bot.send_message(id, f"Текущий адрес: {message.text}. Вы можете сменить его в любое время.", reply_markup=keyboard)
 
     @bot.message_handler(func=lambda message: message.text == "Сменить адрес")
     def change_address(message):
+        '''
+        Обработчик команды смены адреса
+
+        Args:
+            message (telebot.types.Message): Сообщение с командой смены адреса
+        '''
         id = message.chat.id
         recent_addresses = get_user_addresses(id)
         if recent_addresses:
@@ -122,4 +143,3 @@ def register_authorization_handlers(bot):
         else:
             bot.send_message(id, "Пожалуйста, введите ваш адрес")
             bot.register_next_step_handler(message, get_address, id)
-
