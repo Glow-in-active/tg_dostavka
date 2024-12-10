@@ -16,13 +16,8 @@ def save_user_data(id, phone_number, name, age):
     '''
     cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
     user = cursor.fetchone()
-
-    if user:
-        cursor.execute('UPDATE users SET phone_number = ?, name = ?, age = ? WHERE id = ?',
-                    (phone_number, name, age, id))
-    else:
-        cursor.execute('INSERT INTO users (id, phone_number, name, age) VALUES (?, ?, ?, ?)',
-                    (id, phone_number, name, age))
+    cursor.execute('INSERT INTO users (id, phone_number, name, age) VALUES (?, ?, ?, ?)',
+                (id, phone_number, name, age))
 
     conn.commit()
 
@@ -59,3 +54,13 @@ def get_name_from_db(id):
         return name
     else:
         print(f"Пользователь с ID {id} не найден.")
+
+def save_user_address(id, address):
+    cursor.execute('INSERT INTO user_address (id, address) VALUES (?, ?)',
+                   (id, address))
+    conn.commit()
+
+def get_user_addresses(id):
+    cursor.execute("SELECT address FROM user_address WHERE id = ?", (id,))
+    results = cursor.fetchall()
+    return [result[0] for result in results]

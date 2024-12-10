@@ -1,6 +1,7 @@
-from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
-from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db
+# src/modules/authorization/RequestData.py
 
+from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
+from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db, save_user_address, get_user_addresses
 
 def register_authorization_handlers(bot):
     '''
@@ -36,6 +37,17 @@ def register_authorization_handlers(bot):
             if is_old_user(id):
                 name = get_name_from_db(id)
                 bot.send_message(id, f"{name}, здравствуйте", reply_markup=ReplyKeyboardRemove())
+                recent_addresses = get_user_addresses(id)
+                if recent_addresses:
+                    keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+                    for address in recent_addresses:
+                        keyboard.add(KeyboardButton(text=address))
+                    keyboard.add(KeyboardButton(text="Ввести новый адрес"))
+                    bot.send_message(id, "Выберите адрес из недавних или введите новый:", reply_markup=keyboard)
+                    bot.register_next_step_handler(message, handle_address_selection, id)
+                else:
+                    bot.send_message(id, "Пожалуйста, введите ваш адрес")
+                    bot.register_next_step_handler(message, get_address, id)
             else:
                 bot.send_message(id, "Ваш номер телефона подтвержден. Введите ваше имя", reply_markup=ReplyKeyboardRemove())
                 bot.register_next_step_handler(message, get_name, phone_number)
@@ -70,6 +82,44 @@ def register_authorization_handlers(bot):
             age = int(message.text)
             save_user_data(message.chat.id, phone_number, name, age)
             bot.send_message(message.chat.id, "Регистрация прошла успешно")
+            bot.send_message(message.chat.id, "Пожалуйста, введите ваш адрес")
+            bot.register_next_step_handler(message, get_address, message.chat.id)
         except ValueError:
-            bot.send_message(message.chat.id, "Возраст должен быть числом. Пожалуйста, введите его снова.")
+            bot.send_message(message.chat.id, "Возраст должен быть числом. Пожалуйста, введите его снова")
             bot.register_next_step_handler(message, get_age, phone_number, name)
+
+    def get_address(message, id):
+        address = message.text
+        save_user_address(id, address)
+        bot.send_message(id, f"Текущий адрес, {address}")
+        
+        keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+        change_address_button = KeyboardButton(text="Сменить адрес")
+        keyboard.add(change_address_button)
+        bot.send_message(id, f"Текущий адрес, {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
+
+
+    def handle_address_selection(message, id):
+        address=get_user_addresses(id)
+        if message.text == "Ввести новый адрес":
+            bot.send_message(id, "Пожалуйста, введите ваш новый адрес")
+            bot.register_next_step_handler(message, get_address, id)
+        else:
+            save_user_address(id, message.text)
+            bot.send_message(id, f"Текущий адрес, {address}")
+
+    @bot.message_handler(func=lambda message: message.text == "Сменить адрес")
+    def change_address(message):
+        id = message.chat.id
+        recent_addresses = get_user_addresses(id)
+        if recent_addresses:
+            keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            for address in recent_addresses:
+                keyboard.add(KeyboardButton(text=address))
+            keyboard.add(KeyboardButton(text="Ввести новый адрес"))
+            bot.send_message(id, "Выберите адрес из недавних или введите новый:", reply_markup=keyboard)
+            bot.register_next_step_handler(message, handle_address_selection, id)
+        else:
+            bot.send_message(id, "Пожалуйста, введите ваш адрес")
+            bot.register_next_step_handler(message, get_address, id)
+
