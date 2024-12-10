@@ -96,8 +96,6 @@ def register_authorization_handlers(bot):
         '''
         address = message.text
         save_user_address(id, address)
-        bot.send_message(id, f"Текущий адрес: {address}")
-
         keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
         change_address_button = KeyboardButton(text="Сменить адрес")
         keyboard.add(change_address_button)
@@ -116,8 +114,6 @@ def register_authorization_handlers(bot):
             bot.register_next_step_handler(message, get_address, id)
         else:
             save_user_address(id, message.text)
-            bot.send_message(id, f"Текущий адрес: {message.text}")
-
             keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
             change_address_button = KeyboardButton(text="Сменить адрес")
             keyboard.add(change_address_button)

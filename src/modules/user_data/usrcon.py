@@ -71,4 +71,5 @@ def get_user_addresses(id):
     '''
     cursor.execute("SELECT address FROM user_address WHERE id = ?", (id,))
     results = cursor.fetchall()
-    return [result[0] for result in results]
+    unique_addresses = set(result[0] for result in results)  # Используем множество для уникальных адресов
+    return list(unique_addresses)
