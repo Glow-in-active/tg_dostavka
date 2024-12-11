@@ -15,7 +15,6 @@ def save_user_data(id, phone_number, name, age):
         age (int): Возраст пользователя.
     '''
     cursor.execute('SELECT * FROM users WHERE id = ?', (id,))
-    user = cursor.fetchone()
     cursor.execute('INSERT INTO users (id, phone_number, name, age) VALUES (?, ?, ?, ?)',
                     (id, phone_number, name, age))
     conn.commit()
@@ -46,30 +45,3 @@ def get_name_from_db(id):
     cursor.execute("SELECT name FROM users WHERE id = ?", (id,))
     result = cursor.fetchone()
     return result[0] if result else None
-
-def save_user_address(id, address):
-    '''
-    Сохраняет адрес пользователя в базе данных.
-
-    Args:
-        id (int): Идентификатор пользователя в чате.
-        address (str): Адрес пользователя.
-    '''
-    cursor.execute('INSERT INTO user_address (id, address) VALUES (?, ?)',
-                   (id, address))
-    conn.commit()
-
-def get_user_addresses(id):
-    '''
-    Получает все адреса пользователя из базы данных.
-
-    Args:
-        id (int): Идентификатор пользователя в чате.
-
-    Returns:
-        list: Список адресов пользователя.
-    '''
-    cursor.execute("SELECT address FROM user_address WHERE id = ?", (id,))
-    results = cursor.fetchall()
-    unique_addresses = set(result[0] for result in results)  # Используем множество для уникальных адресов
-    return list(unique_addresses)

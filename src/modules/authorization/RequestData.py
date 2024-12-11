@@ -1,5 +1,7 @@
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
-from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db, save_user_address, get_user_addresses
+from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db
+from src.modules.user_data.usrad import save_user_address, get_user_addresses
+from src.modules.restaurants.usrrev import save_user_review
 
 def register_authorization_handlers(bot):
     '''
@@ -95,11 +97,16 @@ def register_authorization_handlers(bot):
             id (int): Идентификатор чата пользователя
         '''
         address = message.text
-        save_user_address(id, address)
-        keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-        change_address_button = KeyboardButton(text="Сменить адрес")
-        keyboard.add(change_address_button)
-        bot.send_message(id, f"Текущий адрес: {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
+        if address == None:
+            bot.send_message(id,"Неверный формат")
+            change_address(message)
+        else:
+            save_user_address(id, address)
+            bot.send_message(id, f"Текущий адрес: {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
+            keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+            change_address_button = KeyboardButton(text="Сменить адрес")
+            keyboard.add(change_address_button)
+        
 
     def handle_address_selection(message, id):
         '''
