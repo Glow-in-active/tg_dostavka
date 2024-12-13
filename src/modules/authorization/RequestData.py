@@ -6,6 +6,9 @@ from src.modules.restaurants.usrrev import save_user_review
 def register_authorization_handlers(bot):
     '''
     Регистрирует обработчики для авторизации пользователей
+
+    Args:
+        bot (telebot.TeleBot): Экземпляр бота Telegram.
     '''
     @bot.message_handler(commands=['start'])
     def send_welcome(message):
@@ -30,6 +33,9 @@ def register_authorization_handlers(bot):
         Args:
             message (telebot.types.Message): Объект сообщения, содержащий информацию о чате, пользователе и переданных контактных данных
         '''
+        bot.delete_message(message.chat.id, message.message_id)
+        if message.message_id - 1 > 0:
+            bot.delete_message(message.chat.id, message.message_id - 1)
         if message.contact:
             id = message.chat.id
             phone_number = message.contact.phone_number
@@ -124,10 +130,26 @@ def register_authorization_handlers(bot):
 
     @bot.message_handler(commands=['change'])
     def change_addr_menu(message):
+        '''
+        Обработчик команды /change
+
+        Вызывает функцию change_address для изменения адреса доставки.
+
+        Args:
+            message (telebot.types.Message): Сообщение от пользователя, содержащее информацию о чате и тексте команды.
+        '''
         change_address(message)
 
     @bot.message_handler(func=lambda message: message.text == "Сменить адрес")
     def change_address(message):
+        '''
+        Обработчик сообщения с текстом "Сменить адрес"
+
+        Вызывает функцию change_address для изменения адреса доставки.
+
+        Args:
+            message (telebot.types.Message): Сообщение от пользователя, содержащее информацию о чате и тексте команды.
+        '''
         change_address(message)
 
         
