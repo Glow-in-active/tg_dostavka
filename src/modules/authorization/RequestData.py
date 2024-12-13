@@ -64,6 +64,8 @@ def register_authorization_handlers(bot):
             phone_number (str): Номер телефона пользователя
         '''
         name = message.text
+        bot.delete_message(message.chat.id, message.message_id)
+        bot.delete_message(message.chat.id, message.message_id-1)
         bot.send_message(message.chat.id, f"{name}, введите ваш возраст")
         bot.register_next_step_handler(message, get_age, phone_number, name)
 
@@ -80,6 +82,8 @@ def register_authorization_handlers(bot):
         '''
         try:
             age = int(message.text)
+            bot.delete_message(message.chat.id, message.message_id)
+            bot.delete_message(message.chat.id, message.message_id-1)
             save_user_data(message.chat.id, phone_number, name, age)
             bot.send_message(message.chat.id, "Регистрация прошла успешно")
             bot.send_message(message.chat.id, "Пожалуйста, введите ваш адрес")
@@ -87,6 +91,9 @@ def register_authorization_handlers(bot):
         except ValueError:
             bot.send_message(message.chat.id, "Возраст должен быть числом. Пожалуйста, введите его снова")
             bot.register_next_step_handler(message, get_age, phone_number, name)
+
+
+
 
     def get_address(message, id):
         '''
@@ -97,16 +104,32 @@ def register_authorization_handlers(bot):
             id (int): Идентификатор чата пользователя
         '''
         address = message.text
+        bot.delete_message(message.chat.id, message.message_id)
         if address == None:
             bot.send_message(id,"Неверный формат")
             change_address(message)
         else:
             save_user_address(id, address)
-            keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+            keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+            continue_button = KeyboardButton(text="К ресторанам")
+            change_address_button = KeyboardButton(text="Сменить адрес")
+            keyboard.add(change_address_button, continue_button)
             bot.send_message(id, f"Текущий адрес: {address}. Вы можете сменить его в любое время.", reply_markup=keyboard)
 
-            change_address_button = KeyboardButton(text="Сменить адрес")
-            keyboard.add(change_address_button)
+
+            bot.delete_message(id, message.message_id-1)
+            bot.delete_message(id, message.message_id-2)
+
+
+
+    @bot.message_handler(commands=['change'])
+    def change_addr_menu(message):
+        change_address(message)
+
+    @bot.message_handler(func=lambda message: message.text == "Сменить адрес")
+    def change_address(message):
+        change_address(message)
+
         
 
     def handle_address_selection(message, id):
@@ -117,15 +140,22 @@ def register_authorization_handlers(bot):
             message (telebot.types.Message): Сообщение с выбранным адресом пользователя
             id (int): Идентификатор чата пользователя
         '''
+        msg = message.text
+        bot.delete_message(message.chat.id, message.message_id)
         if message.text == "Ввести новый адрес":
             bot.send_message(id, "Пожалуйста, введите ваш новый адрес")
             bot.register_next_step_handler(message, get_address, id)
         else:
             save_user_address(id, message.text)
-            keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+            keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             change_address_button = KeyboardButton(text="Сменить адрес")
-            keyboard.add(change_address_button)
+            continue_button = KeyboardButton(text="К ресторанам")
+            keyboard.add(change_address_button, continue_button)
             bot.send_message(id, f"Текущий адрес: {message.text}. Вы можете сменить его в любое время.", reply_markup=keyboard)
+            bot.delete_message(id, message.message_id-1)
+            bot.delete_message(id, message.message_id-2)
+            bot.delete_message(id, message.message_id-3)
+            keyboard.add(change_address_button, continue_button)
 
     @bot.message_handler(func=lambda message: message.text == "Сменить адрес")
     def change_address(message):
@@ -137,13 +167,14 @@ def register_authorization_handlers(bot):
         '''
         id = message.chat.id
         recent_addresses = get_user_addresses(id)
+
         if recent_addresses:
             keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
             for address in recent_addresses:
                 keyboard.add(KeyboardButton(text=address))
-            keyboard.add(KeyboardButton(text="Ввести новый адрес"))
             bot.send_message(id, "Выберите адрес из недавних или введите новый:", reply_markup=keyboard)
             bot.register_next_step_handler(message, handle_address_selection, id)
         else:
             bot.send_message(id, "Пожалуйста, введите ваш адрес")
             bot.register_next_step_handler(message, get_address, id)
+
