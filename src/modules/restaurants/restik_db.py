@@ -98,6 +98,15 @@ def get_rest_by_price_cat(price_category):
     return [name[0] for name in rest_names]
 
 def get_dish_price_by_name(dish_name):
+    '''
+    Выполняет SQL-запрос для выборки цены блюда из таблицы 'dishes', где столбец 'dish_name' соответствует заданному названию блюда.
+
+    Args:
+        dish_name (str): Название блюда.
+
+    Returns:
+        int: Цена блюда.
+    '''
     cursor.execute("SELECT price FROM dishes WHERE dish_name = ?",(dish_name,))
     price = cursor.fetchone()
     return price[0]
