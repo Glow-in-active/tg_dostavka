@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>tg_dostavka.src.modules.restaurants.restik_db</title>
+    <meta name="generator" content="pydoctor 24.11.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          Tg_dostavka <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="tg_dostavka.src.modules.restaurants.restik_db.html" class="internal-link" title="This module">restik<wbr></wbr>_db</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_countrys_from_db" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_countrys_from_db">get<wbr></wbr>_countrys<wbr></wbr>_from<wbr></wbr>_db</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_dish_price_by_name" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_dish_price_by_name">get<wbr></wbr>_dish<wbr></wbr>_price<wbr></wbr>_by<wbr></wbr>_name</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_dishes_by_rest" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_dishes_by_rest">get<wbr></wbr>_dishes<wbr></wbr>_by<wbr></wbr>_rest</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rest_by_country" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_country">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_country</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rest_by_price_cat" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_price_cat">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_price<wbr></wbr>_cat</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rest_by_rating" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_rating">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_rating</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rest_from_db" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_from_db">get<wbr></wbr>_rest<wbr></wbr>_from<wbr></wbr>_db</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_rest_id_by_name" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_id_by_name">get<wbr></wbr>_rest<wbr></wbr>_id<wbr></wbr>_by<wbr></wbr>_name</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#insert_user_review" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.insert_user_review">insert<wbr></wbr>_user<wbr></wbr>_review</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="tg_dostavka.src.modules.restaurants.html" class="internal-link" title="The parent of this module">restaurants</a></code> 
+      </div>
+      
+      <div>
+        
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="tg_dostavka.src.modules.restaurants.rest.html" class="internal-link" title="tg_dostavka.src.modules.restaurants.rest">rest</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="tg_dostavka.src.modules.restaurants.restik_db.html" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db">restik<wbr></wbr>_db</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="tg_dostavka.src.modules.restaurants.usrrev.html" class="internal-link" title="tg_dostavka.src.modules.restaurants.usrrev">usrrev</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+        
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">tg_dostavka</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.html" class="internal-link" title="tg_dostavka.src">src</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.html" class="internal-link" title="tg_dostavka.src.modules">modules</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.restaurants.html" class="internal-link" title="tg_dostavka.src.modules.restaurants">restaurants</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.restaurants.restik_db.html" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db">restik_db</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+          
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id20">
+  
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_countrys_from_db" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_countrys_from_db">get<wbr></wbr>_countrys<wbr></wbr>_from<wbr></wbr>_db</a></code></td>
+    <td>Получает список всех стран из базы данных.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_dish_price_by_name" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_dish_price_by_name">get<wbr></wbr>_dish<wbr></wbr>_price<wbr></wbr>_by<wbr></wbr>_name</a></code></td>
+    <td>Выполняет SQL-запрос для выборки цены блюда из таблицы 'dishes', где столбец 'dish_name' соответствует заданному названию блюда.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_dishes_by_rest" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_dishes_by_rest">get<wbr></wbr>_dishes<wbr></wbr>_by<wbr></wbr>_rest</a></code></td>
+    <td>Эта функция выполняет SQL-запрос для извлечения всех блюд, принадлежащих указанному ресторану, и возвращает их в виде списка.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_rest_by_country" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_country">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_country</a></code></td>
+    <td>Эта функция выполняет SQL-запрос для извлечения всех ресторанов, принадлежащих указанной стране, и возвращает их в виде списка.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_rest_by_price_cat" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_price_cat">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_price<wbr></wbr>_cat</a></code></td>
+    <td>Получает список названий ресторанов по заданной ценовой категории.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_rest_by_rating" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_rating">get<wbr></wbr>_rest<wbr></wbr>_by<wbr></wbr>_rating</a></code></td>
+    <td>Получает список названий ресторанов, отсортированных по рейтингу в порядке убывания.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_rest_from_db" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_from_db">get<wbr></wbr>_rest<wbr></wbr>_from<wbr></wbr>_db</a></code></td>
+    <td>Эта функция выполняет SQL-запрос для извлечения всех ресторанов из таблицы <code><a href="tg_dostavka.src.modules.restaurants.html" class="internal-link" title="tg_dostavka.src.modules.restaurants">restaurants</a></code> и возвращает их в виде списка.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_rest_id_by_name" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_id_by_name">get<wbr></wbr>_rest<wbr></wbr>_id<wbr></wbr>_by<wbr></wbr>_name</a></code></td>
+    <td>Получает id ресторана по имени</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#insert_user_review" class="internal-link" title="tg_dostavka.src.modules.restaurants.restik_db.insert_user_review">insert<wbr></wbr>_user<wbr></wbr>_review</a></code></td>
+    <td>Вставляет отзыв пользователя в таблицу 'rating'.</td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_countrys_from_db">
+    
+  </a>
+  <a name="get_countrys_from_db">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_countrys_from_db</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#get_countrys_from_db" title="tg_dostavka.src.modules.restaurants.restik_db.get_countrys_from_db">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Получает список всех стран из базы данных.</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>List[str]: Список названий стран.</dd>
+<dt>Process:</dt>
+<dd><ol class="rst-arabic rst-simple rst-first rst-last">
+<li>Выполняет SQL-запрос для извлечения всех стран из таблицы <code>country</code>.</li>
+<li>Извлекает все записи и возвращает список названий стран.</li>
+</ol>
+</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_dish_price_by_name">
+    
+  </a>
+  <a name="get_dish_price_by_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_dish_price_by_name</span><span class="function-signature">(dish_name)</span>:
+    
+    <a class="headerLink" href="#get_dish_price_by_name" title="tg_dostavka.src.modules.restaurants.restik_db.get_dish_price_by_name">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Выполняет SQL-запрос для выборки цены блюда из таблицы 'dishes', где столбец 'dish_name' соответствует заданному названию блюда.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>dish_name (str): Название блюда.</dd>
+<dt>Returns:</dt>
+<dd>int: Цена блюда.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_dishes_by_rest">
+    
+  </a>
+  <a name="get_dishes_by_rest">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_dishes_by_rest</span><span class="function-signature">(rest_name)</span>:
+    
+    <a class="headerLink" href="#get_dishes_by_rest" title="tg_dostavka.src.modules.restaurants.restik_db.get_dishes_by_rest">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Эта функция выполняет SQL-запрос для извлечения всех блюд, принадлежащих указанному ресторану,
+и возвращает их в виде списка.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>rest_name (str): Название ресторана.</dd>
+<dt>Returns:</dt>
+<dd>List[str]: Список названий блюд, принадлежащих указанному ресторану.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_country">
+    
+  </a>
+  <a name="get_rest_by_country">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rest_by_country</span><span class="function-signature">(country)</span>:
+    
+    <a class="headerLink" href="#get_rest_by_country" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_country">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Эта функция выполняет SQL-запрос для извлечения всех ресторанов, принадлежащих указанной стране,
+и возвращает их в виде списка.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>country (str): Название страны.</dd>
+<dt>Returns:</dt>
+<dd>List[str]: Список названий ресторанов, принадлежащих указанной стране.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_price_cat">
+    
+  </a>
+  <a name="get_rest_by_price_cat">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rest_by_price_cat</span><span class="function-signature">(price_category)</span>:
+    
+    <a class="headerLink" href="#get_rest_by_price_cat" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_price_cat">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Получает список названий ресторанов по заданной ценовой категории.</p>
+<p>Выполняет SQL-запрос для выборки названий ресторанов из таблицы 'restaurants', где столбец 'price_category'
+соответствует заданной ценовой категории.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>price_category (int): Ценовая категория ресторанов.</dd>
+<dt>Returns:</dt>
+<dd>list: Список названий ресторанов.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_rating">
+    
+  </a>
+  <a name="get_rest_by_rating">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rest_by_rating</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#get_rest_by_rating" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_by_rating">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Получает список названий ресторанов, отсортированных по рейтингу в порядке убывания.</p>
+<p>Выполняет SQL-запрос для выборки названий ресторанов из таблицы 'restaurants', отсортированных по столбцу 'rest_rating'
+в порядке убывания. Возвращает первые 5 ресторанов.</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>list: Список названий ресторанов.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_rest_from_db">
+    
+  </a>
+  <a name="get_rest_from_db">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rest_from_db</span><span class="function-signature">()</span>:
+    
+    <a class="headerLink" href="#get_rest_from_db" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_from_db">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Эта функция выполняет SQL-запрос для извлечения всех ресторанов из таблицы <code><a href="tg_dostavka.src.modules.restaurants.html" class="internal-link" title="tg_dostavka.src.modules.restaurants">restaurants</a></code> и возвращает их в виде списка.</p>
+<dl class="rst-docutils">
+<dt>Returns:</dt>
+<dd>List[str]: Список названий ресторанов.</dd>
+<dt>Process:</dt>
+<dd><ol class="rst-arabic rst-simple rst-first rst-last">
+<li>Выполняет SQL-запрос для извлечения всех ресторанов из таблицы <code><a href="tg_dostavka.src.modules.restaurants.html" class="internal-link" title="tg_dostavka.src.modules.restaurants">restaurants</a></code>.</li>
+<li>Извлекает все записи и возвращает список названий ресторанов.</li>
+</ol>
+</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.get_rest_id_by_name">
+    
+  </a>
+  <a name="get_rest_id_by_name">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_rest_id_by_name</span><span class="function-signature">(rest_name)</span>:
+    
+    <a class="headerLink" href="#get_rest_id_by_name" title="tg_dostavka.src.modules.restaurants.restik_db.get_rest_id_by_name">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Получает id ресторана по имени</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>rest_name (str): Название ресторана.</dd>
+<dt>Returns:</dt>
+<dd>int: id ресторана</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.restaurants.restik_db.insert_user_review">
+    
+  </a>
+  <a name="insert_user_review">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">insert_user_review</span><span class="function-signature">(user_id, rest_id, mark)</span>:
+    
+    <a class="headerLink" href="#insert_user_review" title="tg_dostavka.src.modules.restaurants.restik_db.insert_user_review">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Вставляет отзыв пользователя в таблицу 'rating'.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>user_id (int): Идентификатор пользователя.
+rest_id (int): Идентификатор ресторана.
+mark (int): Оценка, которую пользователь дал ресторану.</dd>
+</dl>
+</div>
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for Tg_dostavka,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.11.1 at 2024-12-14 10:53:46.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

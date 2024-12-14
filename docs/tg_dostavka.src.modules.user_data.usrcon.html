@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>tg_dostavka.src.modules.user_data.usrcon</title>
+    <meta name="generator" content="pydoctor 24.11.1"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+    
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          Tg_dostavka <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="apidocs-help-button" title="Help" href="apidocs-help.html"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="search-results-container" style="display: none;">
+        
+        <div id="search-buttons">
+          <span class="label label-default" id="search-docstrings-button">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+              search in docstrings
+            </input>
+          </label>
+          </span>
+          
+        </div>
+        
+        <noscript>
+            <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+        </noscript>
+
+        <div id="search-status"> </div>
+
+        <div class="warning" id="search-warn-box" style="display: none;">
+          <p class="rst-last"><span id="search-warn"></span></p>
+        </div>
+
+        <table id="search-results">
+          <!-- Filled dynamically by JS -->
+        </table>
+        
+        <div style="margin-top: 10px;">
+          <p>For more information on the search, visit the <a href="apidocs-help.html#rst-search">help page</a>.</p>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</nav>
+    
+    <div class="container-fluid">
+
+      <!-- Side navigation -->
+      <div class="sidebarcontainer" style="display: none;">
+        
+        <div class="sidebar"><nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code class="thisobject"><a href="tg_dostavka.src.modules.user_data.usrcon.html" class="internal-link" title="This module">usrcon</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#get_name_from_db" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.get_name_from_db">get<wbr></wbr>_name<wbr></wbr>_from<wbr></wbr>_db</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#is_old_user" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.is_old_user">is<wbr></wbr>_old<wbr></wbr>_user</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#save_user_data" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.save_user_data">save<wbr></wbr>_user<wbr></wbr>_data</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        <div class="childrenKindTitle">Variables</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#conn" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.conn">conn</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#cursor" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.cursor">cursor</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Package</span>
+        <code><a href="tg_dostavka.src.modules.user_data.html" class="internal-link" title="The parent of this module">user<wbr></wbr>_data</a></code> 
+      </div>
+      
+      <div>
+        
+
+        <div class="childrenKindTitle">Modules</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="tg_dostavka.src.modules.user_data.usrad.html" class="internal-link" title="tg_dostavka.src.modules.user_data.usrad">usrad</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="tg_dostavka.src.modules.user_data.usrcon.html" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon">usrcon</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+        
+
+        
+         
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        </div>
+        <div id="collapseSideBar">
+          <a class="btn btn-link" onclick="toggleSideBarCollapse()" title="Toggle Sidebar Collapse">
+          </a>
+        </div> 
+        <script src="sidebartoggle.js" type="text/javascript"></script>
+       
+      </div>
+
+      <div id="main" class="">
+        
+
+        
+
+        <div class="page-header">
+          <h1 class="module"><code><code><a href="index.html" class="internal-link">tg_dostavka</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.html" class="internal-link" title="tg_dostavka.src">src</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.html" class="internal-link" title="tg_dostavka.src.modules">modules</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.user_data.html" class="internal-link" title="tg_dostavka.src.modules.user_data">user_data</a></code><wbr></wbr>.<code><a href="tg_dostavka.src.modules.user_data.usrcon.html" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon">usrcon</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          module documentation
+        </div>
+
+        <div class="extrasDocstring">
+          
+          <p></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p class="undocumented">Undocumented</p></div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id24">
+  
+  
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#get_name_from_db" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.get_name_from_db">get<wbr></wbr>_name<wbr></wbr>_from<wbr></wbr>_db</a></code></td>
+    <td>Получает имя пользователя из базы данных по его идентификатору.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#is_old_user" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.is_old_user">is<wbr></wbr>_old<wbr></wbr>_user</a></code></td>
+    <td>Проверяет наличие пользователя в базе данных.</td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><code><a href="#save_user_data" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.save_user_data">save<wbr></wbr>_user<wbr></wbr>_data</a></code></td>
+    <td>Функция для сохранения данных пользователя в базе данных. Если пользователь существует, обновляются его данные, если нет — данные добавляются в таблицу.</td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><code><a href="#conn" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.conn">conn</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><code><a href="#cursor" class="internal-link" title="tg_dostavka.src.modules.user_data.usrcon.cursor">cursor</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.user_data.usrcon.get_name_from_db">
+    
+  </a>
+  <a name="get_name_from_db">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">get_name_from_db</span><span class="function-signature">(id)</span>:
+    
+    <a class="headerLink" href="#get_name_from_db" title="tg_dostavka.src.modules.user_data.usrcon.get_name_from_db">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Получает имя пользователя из базы данных по его идентификатору.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>id (int): Идентификатор пользователя в чате.</dd>
+<dt>Returns:</dt>
+<dd>str: Имя пользователя, если найдено, иначе None.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.user_data.usrcon.is_old_user">
+    
+  </a>
+  <a name="is_old_user">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">is_old_user</span><span class="function-signature">(id)</span>:
+    
+    <a class="headerLink" href="#is_old_user" title="tg_dostavka.src.modules.user_data.usrcon.is_old_user">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Проверяет наличие пользователя в базе данных.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>id (int): Идентификатор пользователя в чате.</dd>
+<dt>Returns:</dt>
+<dd>bool: Возвращает True, если пользователь найден в базе данных, иначе False.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basefunction">
+  
+  
+  <a name="tg_dostavka.src.modules.user_data.usrcon.save_user_data">
+    
+  </a>
+  <a name="save_user_data">
+    
+  </a>
+  <div class="functionHeader">
+    
+    
+    <span class="py-keyword">def</span> <span class="py-defname">save_user_data</span><span class="function-signature">(id, phone_number, name, age)</span>:
+    
+    <a class="headerLink" href="#save_user_data" title="tg_dostavka.src.modules.user_data.usrcon.save_user_data">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Функция для сохранения данных пользователя в базе данных.
+Если пользователь существует, обновляются его данные, если нет — данные добавляются в таблицу.</p>
+<dl class="rst-docutils">
+<dt>Args:</dt>
+<dd>id (int): Идентификатор чата, скажем, что это айди пользователя.
+phone_number (str): Номер телефона пользователя.
+name (str): Имя пользователя.
+age (int): Возраст пользователя.</dd>
+</dl>
+</div>
+  </div>
+</div><div class="basevariable">
+  
+  
+  <a name="tg_dostavka.src.modules.user_data.usrcon.conn">
+    
+  </a>
+  <a name="conn">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">conn</span> =
+    
+    <a class="headerLink" href="#conn" title="tg_dostavka.src.modules.user_data.usrcon.conn">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="basevariable">
+  
+  
+  <a name="tg_dostavka.src.modules.user_data.usrcon.cursor">
+    
+  </a>
+  <a name="cursor">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">cursor</span> =
+    
+    <a class="headerLink" href="#cursor" title="tg_dostavka.src.modules.user_data.usrcon.cursor">
+      
+      
+      ¶
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+
+  
+  <div class="container-fluid">
+    <a href="index.html">API Documentation</a> for Tg_dostavka,
+  generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+    24.11.1 at 2024-12-14 10:53:46.
+  </div>
+
+  <!-- Search related scripts needs to be loaded at the end of HTML 
+    parsing not to introduce overhead and display HTML data asap -->
+  <script src="ajax.js" type="text/javascript"></script>
+  <script src="searchlib.js" type="text/javascript"></script>
+  <script src="search.js" type="text/javascript"></script>
+
+</footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>
