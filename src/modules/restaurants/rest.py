@@ -4,7 +4,11 @@ from telebot import types
 from src.modules.user_data.usrcon import save_user_data, is_old_user, get_name_from_db
 from src.modules.user_data.usrad import save_user_address, get_user_addresses
 from src.modules.restaurants.usrrev import save_user_review
+from src.modules.cart.cart_dict import user_cart
 from src.modules.restaurants.restik_db import get_rest_from_db, get_dishes_by_rest, get_countrys_from_db, get_rest_by_country, get_rest_by_rating, get_rest_by_price_cat
+
+current_restaurant = {}
+
 def restaurant_choice_handlers(bot):
     '''
     Регистрирует обработчики для выбора ресторана.
@@ -24,7 +28,7 @@ def restaurant_choice_handlers(bot):
             message (telebot.types.Message): Сообщение от пользователя, содержащее информацию о чате и тексте команды.
         '''
         user_id = message.chat.id
- 
+
         markup = types.InlineKeyboardMarkup()
         trust_button = types.InlineKeyboardButton("Мне повезет 💛", callback_data='trust')
         category_button = types.InlineKeyboardButton("По категориям 📋", callback_data='category')
@@ -44,7 +48,7 @@ def restaurant_choice_handlers(bot):
         '''
         user_id = call.message.chat.id
         rest_names = get_rest_from_db()
-        random_rest_names = random.sample(rest_names,3)
+        random_rest_names = random.sample(rest_names, 3)
         bot.send_message(user_id, "Вы выбрали 'Мне повезет 💛'")
         markup = types.InlineKeyboardMarkup()
         for rest_name in random_rest_names:
@@ -76,7 +80,6 @@ def restaurant_choice_handlers(bot):
         if call.message.message_id - 1 > 0:
             bot.delete_message(user_id, call.message.message_id - 1)
 
-
     @bot.callback_query_handler(func=lambda call: call.data == 'category')
     def handle_category_callback(call):
         '''
@@ -101,8 +104,6 @@ def restaurant_choice_handlers(bot):
         bot.delete_message(user_id, call.message.message_id)
         bot.send_message(user_id, "Выберите категорию:", reply_markup=markup)
 
-
-
     @bot.callback_query_handler(func=lambda call: call.data == 'country_cat')
     def handle_category_country_selection(call):
         '''
@@ -125,7 +126,6 @@ def restaurant_choice_handlers(bot):
         if call.message.message_id - 1 > 0:
             bot.delete_message(user_id, call.message.message_id-1)
 
-
     @bot.callback_query_handler(func=lambda call: call.data.startswith('country_choice:'))
     def handle_rest_choice_by_country(call):
         '''
@@ -145,9 +145,9 @@ def restaurant_choice_handlers(bot):
         bot.delete_message(user_id, call.message.message_id)
         bot.send_message(user_id, f"Вы выбрали кухню мира: {country}")
         for rest in rests:
-            markup.add(types.InlineKeyboardButton(text=rest, callback_data=f'rest_choice:{rest}'))    
-        markup.add(types.InlineKeyboardButton(text="назад", callback_data='country_cat'))   
-        bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)     
+            markup.add(types.InlineKeyboardButton(text=rest, callback_data=f'rest_choice:{rest}'))
+        markup.add(types.InlineKeyboardButton(text="назад", callback_data='country_cat'))
+        bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)
 
     @bot.callback_query_handler(func=lambda call: call.data == 'rating_cat')
     def handle_category_all_reastaurants(call):
@@ -218,8 +218,6 @@ def restaurant_choice_handlers(bot):
         markup.add(types.InlineKeyboardButton(text="назад", callback_data='category'))
         bot.send_message(user_id, "Выберите ценовую категорию:", reply_markup=markup)
 
-
-
     @bot.callback_query_handler(func=lambda call: call.data == 'priceone')
     def handle_category_price_cat_one(call):
         '''
@@ -242,9 +240,9 @@ def restaurant_choice_handlers(bot):
         bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)
 
     @bot.callback_query_handler(func=lambda call: call.data == 'pricetwo')
-    def handle_category_price_cat_one(call):
+    def handle_category_price_cat_two(call):
         '''
-        Обработчик callback-запросов с данными 'priceone'.
+        Обработчик callback-запросов с данными 'pricetwo'.
 
         Отправляет сообщение с клавиатурой для выбора ресторана нужной ценовой категории.
         Клавиатура содержит кнопки с ресторанами, к каждой из них относятся кнопки с ресторанами, и кнопку "назад".
@@ -263,9 +261,9 @@ def restaurant_choice_handlers(bot):
         bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)
 
     @bot.callback_query_handler(func=lambda call: call.data == 'pricethree')
-    def handle_category_price_cat_one(call):
+    def handle_category_price_cat_three(call):
         '''
-        Обработчик callback-запросов с данными 'priceone'.
+        Обработчик callback-запросов с данными 'pricethree'.
 
         Отправляет сообщение с клавиатурой для выбора ресторана нужной ценовой категории.
         Клавиатура содержит кнопки с ресторанами, к каждой из них относятся кнопки с ресторанами, и кнопку "назад".
@@ -284,9 +282,9 @@ def restaurant_choice_handlers(bot):
         bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)
 
     @bot.callback_query_handler(func=lambda call: call.data == 'pricefour')
-    def handle_category_price_cat_one(call):
+    def handle_category_price_cat_four(call):
         '''
-        Обработчик callback-запросов с данными 'priceone'.
+        Обработчик callback-запросов с данными 'pricefour'.
 
         Отправляет сообщение с клавиатурой для выбора ресторана нужной ценовой категории.
         Клавиатура содержит кнопки с ресторанами, к каждой из них относятся кнопки с ресторанами, и кнопку "назад".
@@ -304,23 +302,6 @@ def restaurant_choice_handlers(bot):
         bot.delete_message(user_id, call.message.message_id)
         bot.send_message(user_id, "Выберите ресторан:", reply_markup=markup)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @bot.callback_query_handler(func=lambda call: call.data.startswith('rest_choice:'))
     def handle_rest_choice(call):
         '''
@@ -334,13 +315,20 @@ def restaurant_choice_handlers(bot):
         '''
         user_id = call.message.chat.id
         rest_name = call.data.split(':')[1]
+
+        if current_restaurant.get(user_id) != rest_name:
+            user_cart[user_id] = []
+
+        current_restaurant[user_id] = rest_name
+
         dishes = get_dishes_by_rest(rest_name)
         markup = types.InlineKeyboardMarkup()
-        bot.delete_message(user_id, call.message.message_id)
-        bot.send_message(user_id, f"Вы выбрали ресторан: {rest_name}")
         for dish_name in dishes:
             markup.add(types.InlineKeyboardButton(text=dish_name, callback_data=f'dish_choice:{dish_name}'))
         markup.add(types.InlineKeyboardButton(text="к ресторанам", callback_data='back'))
-        bot.send_message(user_id, "Выберите блюдо:", reply_markup=markup)
-        if call.message.message_id - 1 > 0:
-            bot.delete_message(user_id, call.message.message_id-1)
+
+        bot.edit_message_text(chat_id=user_id, message_id=call.message.message_id, text="Выберите блюдо:", reply_markup=markup)
+
+
+    
+

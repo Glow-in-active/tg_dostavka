@@ -28,7 +28,8 @@ def get_dishes_by_rest(rest_name):
     '''
     cursor.execute("SELECT rest_id FROM restaurants WHERE rest_name = ?", (rest_name,))
     rest_id = cursor.fetchone()
-    cursor.execute("SELECT dish_name from dishes WHERE rest_id = ?",(rest_id))
+    rest_id = rest_id[0]
+    cursor.execute("SELECT dish_name from dishes WHERE rest_id = ?",(rest_id,))
     dish_names = cursor.fetchall()
     return [name[0] for name in dish_names]
 
@@ -95,3 +96,8 @@ def get_rest_by_price_cat(price_category):
     cursor.execute("SELECT rest_name FROM restaurants WHERE price_category = ?",(price_category,))
     rest_names = cursor.fetchall()
     return [name[0] for name in rest_names]
+
+def get_dish_price_by_name(dish_name):
+    cursor.execute("SELECT price FROM dishes WHERE dish_name = ?",(dish_name,))
+    price = cursor.fetchone()
+    return price[0]
