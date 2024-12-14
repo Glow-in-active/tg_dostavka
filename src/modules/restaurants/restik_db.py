@@ -110,3 +110,30 @@ def get_dish_price_by_name(dish_name):
     cursor.execute("SELECT price FROM dishes WHERE dish_name = ?",(dish_name,))
     price = cursor.fetchone()
     return price[0]
+
+def insert_user_review(user_id, rest_id, mark):
+    '''
+    Вставляет отзыв пользователя в таблицу 'rating'.
+
+    Args:
+        user_id (int): Идентификатор пользователя.
+        rest_id (int): Идентификатор ресторана.
+        mark (int): Оценка, которую пользователь дал ресторану.
+    '''
+    cursor.execute('INSERT INTO rating (user_id, rest_id, mark) VALUES (?, ?, ?)', (user_id, rest_id, mark))
+    conn.commit()
+
+def get_rest_id_by_name(rest_name):
+    '''
+    Получает id ресторана по имени
+
+    Args:
+        rest_name (str): Название ресторана.
+
+    Returns:
+        int: id ресторана
+    '''
+    cursor.execute("SELECT rest_id FROM restaurants WHERE rest_name = ?", (rest_name,))
+    rest_id = cursor.fetchone()
+    rest_id = rest_id[0]
+    return rest_id
